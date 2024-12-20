@@ -1,0 +1,21 @@
+name: weigang-member-club-sign-in-task
+
+on:
+  workflow_dispatch:
+  schedule:
+    # “At minute 0.” https://crontab.guru/#0_*_*_*_*
+    - cron: "0 * * * *"
+env:
+  WEIGANG_MEMBER_CLUB_ACCESS_TOKEN: ${{ secrets.WEIGANG_MEMBER_CLUB_ACCESS_TOKEN }}
+
+jobs:
+  run:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout
+      - uses: actions/setup-node
+      - run: npm install
+      - run: |
+          node ./weigang-member-club-sign-in-task.mjs
+
+
