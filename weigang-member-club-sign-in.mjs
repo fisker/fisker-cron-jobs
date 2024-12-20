@@ -4,7 +4,6 @@ import fs from 'node:fs/promises'
 import util from 'node:util'
 import process from 'node:process'
 
-const LOG_FILE = new URL(`./${new Date().toISOString().slice(0,10)}.log`, import.meta.url)
 const {WEIGANG_MEMBER_CLUB_ACCESS_TOKEN: TOKEN} = process.env
 
 async function fetchAndLog() {

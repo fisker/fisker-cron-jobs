@@ -1,0 +1,21 @@
+name: jingdong-sign-in
+
+on:
+  workflow_dispatch:
+  schedule:
+    # “At minute 0.” https://crontab.guru/#0_*_*_*_*
+    - cron: "0 * * * *"
+env:
+  JINGDONG_COOKIES: ${{ secrets.JINGDONG_COOKIES }}
+  JINGDONG_SIGN_IN_BODY: ${{ secrets.JINGDONG_SIGN_IN_BODY }}
+
+jobs:
+  run:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+      - run: |
+          node ./jingdong-sign-in.mjs
+
+
